@@ -1,0 +1,380 @@
+/* Layout geral da página e plano de fundo. */
+body {
+  font-family:
+    "Trebuchet MS", Arial, sans-serif;
+  color: #4f5d57;
+  margin: 0;
+  padding: 24px 16px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #e8eee6;
+
+  /* Fallback simples para navegadores sem image-set */
+  background-image:
+    linear-gradient(
+      rgba(20, 31, 18, 0.35),
+      rgba(20, 31, 18, 0.35)
+    ),
+    url("../img/background.jpg"),
+    url("../img/background.avif");
+
+  /* Prioriza AVIF e cai para JPG quando necessário */
+  background-image:
+    linear-gradient(
+      rgba(20, 31, 18, 0.35),
+      rgba(20, 31, 18, 0.35)
+    ),
+    image-set(
+      url("../img/background.avif")
+        type("image/avif"),
+      url("../img/background.jpg")
+        type("image/jpeg")
+    );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Cartão principal da interface. */
+.app-card {
+  width: 100%;
+  max-width: 700px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.92
+  );
+  border: 1px solid
+    rgba(255, 255, 255, 0.65);
+  border-radius: 18px;
+  padding: 24px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 14px 38px
+    rgba(13, 20, 12, 0.26);
+}
+
+/* Título principal. */
+h1 {
+  margin: 0 0 24px;
+  text-align: center;
+  color: #6a5b86;
+  letter-spacing: 0.3px;
+}
+
+/* Grade com os campos do formulário. */
+.fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+  align-items: end;
+}
+
+.field {
+  position: relative;
+  margin-bottom: 0;
+  width: 150px;
+}
+
+.fields-grid .field:nth-child(odd) {
+  justify-self: end;
+}
+
+.fields-grid .field:nth-child(even) {
+  justify-self: start;
+}
+
+/* Rótulos dos campos. */
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  text-align: center;
+  color: #5f7d73;
+}
+
+/* Contêiner do input, sufixo e setas customizadas. */
+.input-with-unit {
+  position: relative;
+  width: 100%;
+  max-width: 150px;
+  --unit-left: 14px;
+}
+
+/* Campo numérico principal. */
+input {
+  width: 100%;
+  max-width: none;
+  padding: 8px 32px 8px 10px;
+  box-sizing: border-box;
+  text-align: center;
+  border: 1px solid #cdbfe3;
+  border-radius: 8px;
+  background-color: #fbf8ff;
+  color: #554a6d;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* Elemento invisível usado para medir a largura do valor digitado. */
+.value-sizer {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  visibility: hidden;
+  white-space: pre;
+  pointer-events: none;
+  font-size: 13px;
+  font-weight: 400;
+  font-family:
+    "Trebuchet MS", Arial, sans-serif;
+}
+
+/* Sufixo visual em centímetros. */
+.unit {
+  position: absolute;
+  left: var(--unit-left);
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: auto;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5f7d73;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.unit.hidden-unit {
+  opacity: 0;
+}
+
+/* Controles customizados para incremento/decremento. */
+.step-controls {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.step-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 12px;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  border: none;
+  background: transparent;
+  color: #7e6b9f;
+  font-size: 9px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.step-button:hover {
+  background: transparent;
+  color: #5d4f7d;
+}
+
+/* Remove as setas nativas do navegador para evitar conflito com os controles customizados. */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Destaque visual no foco do campo. */
+input:focus {
+  outline: none;
+  border-color: #a892d8;
+  box-shadow: 0 0 0 3px
+    rgba(168, 146, 216, 0.25);
+}
+
+/* Popup de orientação para valores fora da faixa aceita. */
+.range-hint {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 8px);
+  transform: translateY(-50%);
+  z-index: 5;
+  min-width: max-content;
+  max-width: 200px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid #ead27d;
+  background-color: #fff5c8;
+  color: #785f2a;
+  font-size: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px
+    rgba(73, 54, 15, 0.14);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.fields-grid
+  .field:nth-child(odd)
+  .range-hint {
+  left: auto;
+  right: calc(100% + 8px);
+}
+
+.fields-grid
+  .field:nth-child(even)
+  .range-hint {
+  left: calc(100% + 8px);
+  right: auto;
+}
+
+.range-hint.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Área de saída do resultado textual e da imagem. */
+.action-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 14px;
+}
+
+button {
+  display: block;
+  margin: 16px 0 0;
+  min-height: 44px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  background-color: #c4b3e6;
+  color: #2f2447;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: #b5a0dd;
+}
+
+#result {
+  margin-top: 20px;
+  min-height: 1.4em;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  color: #5d4f7d;
+}
+
+/* Espaço fixo da imagem de previsão para evitar saltos de layout. */
+.prediction-image {
+  margin: 16px auto 0;
+  width: 460px;
+  max-width: 100%;
+  height: 300px;
+  min-height: 300px;
+}
+
+.prediction-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid
+    rgba(127, 105, 170, 0.35);
+  box-shadow: 0 8px 20px
+    rgba(13, 20, 12, 0.26);
+}
+
+.prediction-image.awaiting-state img {
+  object-fit: contain;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.prediction-image.hidden {
+  display: block;
+  visibility: hidden;
+}
+
+/* Ajustes responsivos para telas menores. */
+@media (max-width: 560px) {
+  body {
+    padding: 12px;
+    background-attachment: scroll;
+  }
+
+  .app-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .fields-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .field {
+    width: 100%;
+  }
+
+  .range-hint,
+  .fields-grid
+    .field:nth-child(odd)
+    .range-hint,
+  .fields-grid
+    .field:nth-child(even)
+    .range-hint {
+    top: calc(100% + 6px);
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  .fields-grid .field:nth-child(odd),
+  .fields-grid .field:nth-child(even) {
+    justify-self: stretch;
+  }
+
+  input {
+    width: 100%;
+    max-width: none;
+  }
+
+  .input-with-unit {
+    width: 100%;
+    max-width: none;
+  }
+
+  .unit {
+    left: var(--unit-left);
+  }
+
+  .prediction-image {
+    max-width: 100%;
+    height: 250px;
+    min-height: 250px;
+  }
+
+  .prediction-image img {
+    height: 100%;
+  }
+}
