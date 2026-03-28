@@ -4,6 +4,7 @@ from pathlib import Path
 
 import joblib
 import numpy as np
+import pandas as pd
 from sklearn.datasets import load_iris
 from sklearn.metrics import accuracy_score, f1_score
 
@@ -49,7 +50,12 @@ def test_model_meets_minimum_performance_requirements() -> None:
 
     # Usa o conjunto Iris inteiro para uma validação rápida de regressão do modelo.
     iris = load_iris()
-    x = iris.data
+    # Envolve os dados em um DataFrame com os mesmos nomes de colunas usados no treinamento,
+    # evitando o aviso de feature names incompatíveis do StandardScaler.
+    x = pd.DataFrame(
+        iris.data,
+        columns=["sepal_length", "sepal_width", "petal_length", "petal_width"],
+    )
     y_true = iris.target
 
     # Replica o fluxo de pré-processamento + predição da aplicação.
