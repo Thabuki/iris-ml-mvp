@@ -117,7 +117,7 @@ function showImageByName(
   altText,
   imageMode
 ) {
-  // Evita recarregar a mesma imagem quando nada mudou.
+  // Evita recarregar a mesma imagem quando nada mudou. Estava dando um flicker chato se era a mesma imagem.
   if (
     currentImageMode === imageMode &&
     !predictionImageContainer.classList.contains(

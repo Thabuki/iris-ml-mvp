@@ -119,7 +119,7 @@ Métricas e thresholds definidos:
 
 `pytest -q`
 
-### Tutorial rápido de PyTest (iniciante)
+### Tutorial rápido de PyTest
 
 O PyTest é uma ferramenta que executa testes automaticamente. Neste projeto, ele verifica se o modelo atende aos requisitos mínimos de desempenho antes de ser aceito.
 
@@ -155,16 +155,6 @@ Como ele funciona, em termos simples:
 - Calcula métricas (`accuracy` e `f1_macro`).
 - Compara com os limites mínimos (`0.90` e `0.90`).
 - Falha automaticamente se o modelo não cumprir os critérios.
-
-## Comentários e legibilidade do código
-
-O arquivo `app.py` foi comentado em português para facilitar leitura técnica, apresentação acadêmica e manutenção. Os comentários explicam principalmente:
-
-- carregamento dos artefatos;
-- validação do JSON recebido;
-- transformação dos dados numéricos;
-- normalização da resposta do modelo;
-- retorno do resultado ao frontend.
 
 ### Interpretação do resultado
 

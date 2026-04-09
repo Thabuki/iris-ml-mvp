@@ -14,10 +14,10 @@ Este frontend compõe o MVP acadêmico da disciplina e tem como finalidade ofere
 
 A interface foi construída com HTML e JavaScript puros, sem uso de frameworks. O formulário apresenta quatro campos numéricos correspondentes às variáveis de entrada do modelo:
 
-- `sepal_length`
-- `sepal_width`
-- `petal_length`
-- `petal_width`
+- `Comprimento da Sépala`
+- `Largura da Sépala`
+- `Comprimento da Pétala`
+- `Largura da Pétala`
 
 Ao preencher os campos, a interface envia automaticamente os dados ao backend e atualiza o resultado em tempo real (sem necessidade de botão de envio).
 
@@ -36,7 +36,7 @@ Para manter a organização do frontend, os arquivos foram separados por respons
 - `index.html`: estrutura da página
 - `css/styles.css`: regras de estilo
 - `js/script.js`: lógica da interface e chamada à API
-- `img/`: imagens das classes (`setosa`, `versicolor`, `virginica`) e arquivos de fundo (`background.avif`/`background.jpg`)
+- `img/`: imagens das classes (`setosa`, `versicolor`, `virginica`) e arquivos de fundo (`background.avif`/`background.jpg`). Eu ia remover o .avif, mas pesquisei e é um formato moderno para internet que eu não conhecia.
 
 ## Recursos implementados na interface
 
@@ -67,5 +67,4 @@ Os arquivos `index.html`, `css/styles.css` e `js/script.js` foram comentados em 
 ## Observações
 
 - Este componente foi projetado para ser mínimo, didático e compatível com os objetivos de um MVP acadêmico.
-- Caso se deseje maior escalabilidade futura, a pasta `img/` pode ser subdividida entre `classes/`, `background/` e `ui/` sem alterar o conceito atual do projeto.
 - Este projeto possui finalidade exclusivamente acadêmica e integra o desenvolvimento do MVP da disciplina.

@@ -88,17 +88,17 @@ A API ficará disponível em `http://localhost:5000`.
 
 Acesse a pasta `frontend` e abra o arquivo `index.html` em um navegador.
 
-Se desejar, também é possível utilizar uma extensão de servidor local, como o Five Server, para servir os arquivos estáticos durante os testes.
+Se desejar, também é possível utilizar uma extensão de servidor local, como o Five Server, que eu pessoalmente uso, para servir os arquivos estáticos durante os testes.
 
 ### 5) Testar o fluxo completo
 
 1. Certifique-se de que o backend está em execução.
 2. Abra a interface do frontend no navegador.
 3. Preencha os quatro atributos da flor:
-   - `sepal_length`
-   - `sepal_width`
-   - `petal_length`
-   - `petal_width`
+   - `Comprimento da Sépala`
+   - `Largura da Sépala`
+   - `Comprimento da Pétala`
+   - `Largura da Pétala`
 4. A predição é atualizada automaticamente conforme os valores são alterados.
 5. Verifique o resultado exibido na página e a imagem correspondente da classe prevista.
 
@@ -130,7 +130,5 @@ O sistema deve enviar os dados do frontend para o endpoint `/predict` do backend
 
 - O projeto foi desenvolvido com foco em simplicidade, clareza e finalidade didática.
 - O backend e o frontend foram organizados em diretórios separados para facilitar manutenção e entendimento.
-- Os arquivos centrais foram comentados em português para facilitar apresentação, revisão acadêmica e manutenção futura.
 - O notebook principal foi mantido na raiz do repositório para facilitar a localização durante a submissão e a correção.
-- Como melhoria futura opcional, os artefatos `model.pkl` e `scaler.pkl` podem ser movidos para uma subpasta como `backend/artifacts/`, caso se deseje separar ainda mais código e arquivos gerados.
 - Este projeto possui finalidade exclusivamente acadêmica.
