@@ -52,8 +52,6 @@ Para submissão e revisão do projeto, os arquivos e pastas principais são:
 - [frontend/](frontend): pasta da interface web.
 - [frontend/index.html](frontend/index.html): página principal do frontend.
 
-Se o repositório for compartilhado com avaliadores, recomenda-se usar [colab_ml_mvp.ipynb](colab_ml_mvp.ipynb) como ponto de entrada principal para a parte de machine learning e as pastas [backend/](backend) e [frontend/](frontend) como ponto de entrada da aplicação full stack.
-
 ## Como executar o projeto completo
 
 Antes de executar a aplicação, recomenda-se abrir o notebook [colab_ml_mvp.ipynb](colab_ml_mvp.ipynb) no Google Colab para consultar o processo completo de treinamento, comparação de modelos e exportação dos artefatos utilizados pelo backend.
