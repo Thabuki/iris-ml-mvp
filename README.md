@@ -8,14 +8,13 @@
 
 ## Contexto do projeto
 
-Este projeto acadêmico integra o desenvolvimento do MVP da disciplina e tem como objetivo classificar espécies de flores Íris por meio de técnicas de machine learning. O modelo foi construído a partir de práticas como separação treino/teste (holdout), padronização com `StandardScaler`, comparação entre algoritmos como KNN, Árvore de Decisão, Naive Bayes e SVM, além de otimização de hiperparâmetros e validação cruzada.
+Este projeto acadêmico integra o desenvolvimento do MVP da disciplina e tem como objetivo classificar espécies de flores Íris por meio de técnicas de machine learning. O modelo foi construído a partir de práticas como separação treino/teste (holdout), padronização com StandardScaler, comparação entre algoritmos como KNN, Árvore de Decisão, Naive Bayes e SVM, além de otimização de hiperparâmetros e validação cruzada.
 
 ## Estrutura do projeto
 
 - **colab_ml_mvp.ipynb**: notebook principal do projeto, preparado para entrega e execução no Google Colab.
 - **backend/**: API Flask, artefatos do modelo, dependências e teste automatizado.
 - **frontend/**: interface web construída com HTML, CSS e JavaScript puros.
-- **.venv/**: ambiente virtual Python local.
 
 ### Estrutura resumida
 
@@ -86,7 +85,7 @@ A API ficará disponível em `http://localhost:5000`.
 
 Acesse a pasta `frontend` e abra o arquivo `index.html` em um navegador.
 
-Se desejar, também é possível utilizar uma extensão de servidor local, como o Five Server, que eu pessoalmente uso, para servir os arquivos estáticos durante os testes.
+Se desejar, também é possível utilizar uma extensão do VSCode de servidor local, como o Five Server, que eu pessoalmente uso, para servir os arquivos estáticos durante os testes.
 
 ### 5) Testar o fluxo completo
 

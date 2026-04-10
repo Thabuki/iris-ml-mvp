@@ -165,5 +165,4 @@ Como ele funciona, em termos simples:
 
 - O endpoint retorna erro HTTP 400 quando campos obrigatórios não são informados.
 - O arquivo `requirements.txt` foi incluído para facilitar a instalação padronizada das dependências do projeto.
-- O teste automatizado ajuda a evitar regressões caso `model.pkl` seja substituído no futuro.
 - Este projeto possui finalidade exclusivamente acadêmica e integra o desenvolvimento do MVP da disciplina.

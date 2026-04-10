@@ -8,7 +8,7 @@
 
 ## Contexto do projeto
 
-Este frontend compõe o MVP acadêmico da disciplina e tem como finalidade oferecer uma interface simples para submissão dos atributos de uma flor Íris ao serviço de classificação desenvolvido em machine learning.
+Este frontend compõe o MVP acadêmico da disciplina e tem como finalidade oferecer uma interface simples para o envio de atributos de uma flor Íris ao serviço de classificação desenvolvido em machine learning.
 
 ## Funcionamento da interface
 
