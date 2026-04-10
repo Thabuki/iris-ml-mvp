@@ -6,7 +6,7 @@ import joblib
 import numpy as np
 import pandas as pd
 from sklearn.datasets import load_iris
-from sklearn.metrics import accuracy_score, f1_score
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, f1_score
 
 
 # Localiza os artefatos a partir da pasta do backend.
@@ -66,6 +66,43 @@ def test_model_meets_minimum_performance_requirements() -> None:
     # Calcula as métricas que funcionam como critério de aceite do MVP.
     accuracy = accuracy_score(y_true, y_pred)
     f1_macro = f1_score(y_true, y_pred, average="macro")
+
+    # --- Console output ---
+    sep = "-" * 52
+    print(f"\n{sep}")
+    print("  MODEL PERFORMANCE REPORT")
+    print(sep)
+    print(f"  Samples evaluated : {len(y_true)}")
+    print(f"  Classes           : {[str(n) for n in iris.target_names]}")
+    print(sep)
+    print("  THRESHOLDS")
+    print(f"    Accuracy  >= {MIN_ACCURACY:.2f}")
+    print(f"    F1-macro  >= {MIN_F1_MACRO:.2f}")
+    print(sep)
+    print("  RESULTS")
+    accuracy_status = "PASS" if accuracy >= MIN_ACCURACY else "FAIL"
+    f1_status = "PASS" if f1_macro >= MIN_F1_MACRO else "FAIL"
+    print(f"    Accuracy  = {accuracy:.4f}  [{accuracy_status}]")
+    print(f"    F1-macro  = {f1_macro:.4f}  [{f1_status}]")
+    print(sep)
+    print("  PER-CLASS REPORT")
+    print(
+        classification_report(
+            y_true,
+            y_pred,
+            target_names=iris.target_names,
+            digits=4,
+        )
+    )
+    print("  CONFUSION MATRIX  (rows=true, cols=predicted)")
+    cm = confusion_matrix(y_true, y_pred)
+    header = "          " + "  ".join(f"{n:>10}" for n in iris.target_names)
+    print(header)
+    for label, row in zip(iris.target_names, cm):
+        row_str = "  ".join(f"{v:>10}" for v in row)
+        print(f"  {label:>8}  {row_str}")
+    print(sep)
+    # ----------------------
 
     assert accuracy >= MIN_ACCURACY, (
         "Accuracy abaixo do mínimo exigido. "
